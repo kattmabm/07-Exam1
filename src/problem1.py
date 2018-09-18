@@ -99,6 +99,7 @@ def problem1a(rectangle, square, thickness, window):
                         rectangle.get_upper_right_corner().y)
     line = rg.Line(line_start, line_end)
     line.thickness = thickness
+    line.color = rectangle.outline_color
 
     square.attach_to(window)
     rectangle.attach_to(window)
