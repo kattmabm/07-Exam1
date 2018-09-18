@@ -2,8 +2,8 @@
 Exam 1, problem 1.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Amanda Stouder, their colleagues and Braden Kattman.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -89,10 +89,21 @@ def problem1a(rectangle, square, thickness, window):
       :type window:    rg.RoseWindow
     """
     # --------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # DONE: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
 
+    line_start = rg.Point(square.center.x, square.center.y)
+    rectangle_length = rectangle.get_upper_right_corner().x - rectangle.get_upper_left_corner().x
+    line_end = rg.Point(rectangle.get_upper_right_corner().x - (.5 * rectangle_length),
+                        rectangle.get_upper_right_corner().y)
+    line = rg.Line(line_start, line_end)
+    line.thickness = thickness
+
+    square.attach_to(window)
+    rectangle.attach_to(window)
+    line.attach_to(window)
+    window.render()
 
 def run_test_problem1b():
     """ Tests the  problem1b   function. """
@@ -149,9 +160,18 @@ def problem1b(point, win, width, height, color):
       :type color:  str
     """
     # --------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # DONE: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
+
+    top_left = rg.Point(point.x - (width/2), point.y)
+    bottom_right = rg.Point(point.x + (width/2), point.y + height)
+    ellipse = rg.Ellipse(top_left, bottom_right)
+    ellipse.fill_color = color
+
+    point.attach_to(win)
+    ellipse.attach_to(win)
+    win.render()
 
 
 # ------------------------------------------------------------------------------
